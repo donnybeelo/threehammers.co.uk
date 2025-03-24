@@ -1,0 +1,156 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
+  font-family: 'Arial', sans-serif;
+  color: white;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.hammer-container {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  margin-bottom: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hammer-wrapper {
+  display: none;
+}
+
+.mallet-wrapper {
+  position: absolute;
+  transition: transform 0.1s linear;
+  /* Set transform origin to center of SVG */
+  transform-origin: center center;
+}
+
+.hammer {
+  display: none;
+}
+
+.mallet {
+  width: 320px;
+  height: 400px;
+  /* filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.6)); */
+}
+
+.centre-dot {
+  width: 45px;
+  height: 45px;
+  background-color: #68605a;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 0;
+}
+
+.coming-soon {
+  text-align: center;
+  max-width: 600px;
+}
+
+.coming-soon h1 {
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+  color: #f8f8f8;
+}
+
+.coming-soon h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #e0e0e0;
+}
+
+.coming-soon p {
+  font-size: 1.2rem;
+  color: #a0a0a0;
+}
+
+@media (max-width: 768px) {
+  .hammer-container {
+    width: 400px;
+    height: 400px;
+  }
+  
+  .mallet {
+    width: 240px;
+    height: 320px;
+  }
+  
+  .coming-soon h1 {
+    font-size: 2.5rem;
+  }
+  
+  .coming-soon h2 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hammer-container {
+    width: 300px;
+    height: 300px;
+  }
+  
+  .mallet {
+    width: 160px;
+    height: 200px;
+  }
+}
