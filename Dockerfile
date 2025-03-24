@@ -3,8 +3,8 @@ FROM node:20 as vite-build
 
 WORKDIR /threehammers.co.uk
 
-# Copy package.json and package-lock.json (or yarn.lock) files
-COPY package*.json yarn.lock ./
+# Copy package.json and package-lock.json files
+COPY package*.json ./
 
 
 # Install dependencies
