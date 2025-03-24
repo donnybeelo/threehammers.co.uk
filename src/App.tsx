@@ -3,6 +3,27 @@ import "./App.css";
 
 function App() {
 	const [rotation, setRotation] = useState(0);
+	const [theme, setTheme] = useState<"light" | "dark">("dark");
+
+	useEffect(() => {
+		// Check for system preference
+		const mediaQuery = window.matchMedia("(prefers-color-scheme: light)");
+
+		// Set initial theme based on system preference
+		setTheme(mediaQuery.matches ? "light" : "dark");
+
+		// Add listener for changes
+		const handleChange = (e: MediaQueryListEvent) => {
+			setTheme(e.matches ? "light" : "dark");
+		};
+
+		mediaQuery.addEventListener("change", handleChange);
+
+		// Cleanup
+		return () => {
+			mediaQuery.removeEventListener("change", handleChange);
+		};
+	}, []);
 
 	useEffect(() => {
 		const interval = setInterval(() => {
@@ -11,6 +32,11 @@ function App() {
 
 		return () => clearInterval(interval);
 	}, []);
+
+	// Apply theme class to the root element
+	useEffect(() => {
+		document.documentElement.setAttribute("data-theme", theme);
+	}, [theme]);
 
 	return (
 		<div className="app-container">
@@ -29,14 +55,20 @@ function App() {
 							xmlns="http://www.w3.org/2000/svg"
 						>
 							{/* Handle */}
-							<rect x="57" y="13" width="6" height="85" fill="#8B4513" />
+							<rect
+								x="57"
+								y="13"
+								width="6"
+								height="85"
+								fill="var(--handle-color)"
+							/>
 							{/* Handle details */}
 							<line
 								x1="59"
 								y1="13"
 								x2="59"
 								y2="98"
-								stroke="#A0522D"
+								stroke="var(--handle-detail-color)"
 								strokeWidth="1"
 							/>
 							<line
@@ -44,7 +76,7 @@ function App() {
 								y1="13"
 								x2="61"
 								y2="98"
-								stroke="#A0522D"
+								stroke="var(--handle-detail-color)"
 								strokeWidth="1"
 							/>
 							{/* Mallet head */}
@@ -54,7 +86,7 @@ function App() {
 								width="40"
 								height="30"
 								rx="5"
-								fill="#D2B48C"
+								fill="var(--mallet-head-color)"
 							/>
 							{/* Mallet head details */}
 							<line
@@ -62,7 +94,7 @@ function App() {
 								y1="23"
 								x2="75"
 								y2="23"
-								stroke="#A0522D"
+								stroke="var(--handle-detail-color)"
 								strokeWidth="1"
 							/>
 							<line
@@ -70,7 +102,7 @@ function App() {
 								y1="33"
 								x2="77"
 								y2="33"
-								stroke="#A0522D"
+								stroke="var(--handle-detail-color)"
 								strokeWidth="1"
 							/>
 							<line
@@ -78,7 +110,7 @@ function App() {
 								y1="43"
 								x2="75"
 								y2="43"
-								stroke="#A0522D"
+								stroke="var(--handle-detail-color)"
 								strokeWidth="1"
 							/>
 						</svg>
